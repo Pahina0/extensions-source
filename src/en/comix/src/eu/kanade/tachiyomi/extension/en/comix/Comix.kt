@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.extension.en.comix
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
@@ -257,8 +258,8 @@ class Comix : HttpSource(), ConfigurableSource {
             throw Exception("No images found for chapter ${result.chapterId}")
         }
 
-        return result.images.mapIndexed { index, url ->
-            Page(index, imageUrl = url)
+        return result.images.mapIndexed { index, image ->
+            Page(index, imageUrl = image.url)
         }
     }
 
